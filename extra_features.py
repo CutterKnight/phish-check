@@ -9,11 +9,13 @@ parts = the same address split by Python's urlsplit: parts.scheme, parts.hostnam
         parts.path, parts.query ...
 
 Example of the shape of a feature (not active):
-    "underscores_in_url": url.count("_"),
+    "underscores_in_url": url.count("g"),
 """
 
 
 def extra(url, parts):
     features = {}
-    # TODO (week 3 task): add at least 3 features of your own
+    features ["UnderScores"]= url.count('_')
+    features ["has_php"]= "php" in url.lower()
+    features ["Path_segments"]= url.split('/').count('_') + 1
     return features
