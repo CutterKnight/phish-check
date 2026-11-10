@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Data{% endblock %}
+{% block content %}
+<h1 class="h4">Prepared data</h1>
+<p>{{ n }} addresses from {{ hosts }} different hosts:
+  {{ counts.get(1, 0) }} phishing and {{ counts.get(0, 0) }} legitimate.</p>
+<div class="row">
+  {% for name, urls in samples.items() %}
+  <div class="col-md-6">
+    <h2 class="h6">First 10 {{ name }} addresses</h2>
+    <ul class="small">{% for u in urls %}<li><code>{{ u[:90] }}</code></li>{% endfor %}</ul>
+  </div>
+  {% endfor %}
+</div>
+<p class="small text-muted">The addresses are shown as plain text on purpose. Do not copy them into a browser.</p>
+{% endblock %}

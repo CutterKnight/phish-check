@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Phishing URL Checker{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" href="{{ url_for('check') }}">Phishing URL Checker</a>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('check') }}">Check</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('data_page') }}">Data</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container pb-5">
+  {% block content %}{% endblock %}
+  <hr>
+  <p class="small text-muted">Educational project. Addresses are analysed as text only and are never opened.
+  Data: PhiUSIIL Phishing URL dataset (Prasad and Chandra), UCI, CC BY 4.0.</p>
+</div>
+</body>
+</html>

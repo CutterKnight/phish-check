@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="h4">Address features</h1>
+<p class="text-muted">Type a full web address. The page shows the numbers that will later be given to the model.
+The address is not opened and is not shown as a link: never open an address you suspect.</p>
+<form method="get" class="row g-2 mb-3">
+  <div class="col-md-9"><input name="url" value="{{ text }}" class="form-control" placeholder="http://example.com/login" maxlength="2000"></div>
+  <div class="col-auto"><button class="btn btn-dark">Show features</button></div>
+</form>
+{% if error and text %}<div class="alert alert-danger">{{ error }}</div>{% endif %}
+{% if features %}
+<p>Address: <code>{{ clean }}</code></p>
+<table class="table table-sm table-striped bg-white w-auto">
+  <thead><tr><th>Feature</th><th>Value</th></tr></thead>
+  <tbody>{% for name, value in features.items() %}<tr><td>{{ name }}</td><td>{{ value }}</td></tr>{% endfor %}</tbody>
+</table>
+{% endif %}
+{% endblock %}
